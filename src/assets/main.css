@@ -1,24 +1,22 @@
 /* ============================================================
    ACTIVE INTERIORS & CONSTRUCTION — design tokens
-   Direction: architectural drafting paper — off-white "vellum"
-   background, hairline grid, brass accent, dimension-line
-   dividers borrowed from real construction-drawing convention.
+   Official palette: black, white, butter yellow.
    ============================================================ */
 
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
 
 :root {
-  --paper: #f5f2ec;
-  --paper-dim: #ece7db;
-  --line: #d6cdb8;
-  --line-strong: #b8ac8c;
-  --ink: #1a1815;
-  --ink-soft: #55503f;
-  --charcoal: #1f1d18;
-  --charcoal-soft: #2c2921;
-  --brass: #9c7a3c;
-  --brass-light: #c9a76a;
-  --off-white: #faf8f3;
+  --paper: #ffffff;
+  --paper-dim: #f5f5f2;
+  --line: #e4e4e0;
+  --line-strong: #c9c9c2;
+  --ink: #101010;
+  --ink-soft: #4a4a47;
+  --charcoal: #0b0b0a;
+  --charcoal-soft: #1c1c1a;
+  --brass: #f2c94c;
+  --brass-light: #f7dd86;
+  --off-white: #ffffff;
 
   --font-display: 'Space Grotesk', sans-serif;
   --font-body: 'Inter', sans-serif;
@@ -84,7 +82,7 @@ button {
   font-size: 0.72rem;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--brass);
+  color: var(--ink);
 }
 
 .wrap {
