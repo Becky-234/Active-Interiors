@@ -34,7 +34,7 @@ const { sheet, label, dark = false } = defineProps<{
 .rule {
   flex: 1;
   height: 1px;
-  background: var(--line-strong);
+  background: linear-gradient(90deg, transparent, var(--line-strong) 20%, var(--line-strong) 80%, transparent);
 }
 
 .tick {
@@ -49,14 +49,24 @@ const { sheet, label, dark = false } = defineProps<{
   letter-spacing: 0.14em;
   color: var(--ink-soft);
   white-space: nowrap;
+  padding: 0.3rem 0.8rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
 }
 
-.divider.dark .rule,
+.divider.dark .rule {
+  background: linear-gradient(90deg, transparent, rgba(201, 167, 106, 0.4) 20%, rgba(201, 167, 106, 0.4) 80%, transparent);
+}
+
 .divider.dark .tick {
-  background: rgba(201, 167, 106, 0.35);
+  background: rgba(201, 167, 106, 0.4);
 }
 
 .divider.dark .tag {
   color: var(--brass-light);
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(201, 167, 106, 0.25);
 }
 </style>
