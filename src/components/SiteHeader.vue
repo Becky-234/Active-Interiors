@@ -53,7 +53,7 @@ onUnmounted(() => {
       <transition name="drop">
         <nav v-if="open" class="mobile-nav">
           <a v-for="l in links" :key="l.href" :href="l.href" @click="close">{{ l.label }}</a>
-          <a href="tel:+256744300188" class="mobile-call" @click="close">Call 0744 300188</a>
+          <a href="tel:+256740769931" class="mobile-call" @click="close">Call +256 776 419829</a>
         </nav>
       </transition>
     </div>
