@@ -11,7 +11,7 @@ const values: Value[] = [
   {
     label: 'Finish',
     title: 'Luxury finishes',
-    body: 'Marble, brass and custom cabinetry detailing on every handover — not reserved for the show unit.'
+    body: 'Marble, brass and custom cabinetry detailing on every handover not reserved for the show unit.'
   },
   {
     label: 'Layout',

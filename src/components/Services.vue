@@ -11,7 +11,7 @@ const services: Service[] = [
   {
     code: 'ID',
     title: 'Interior Design',
-    body: 'Concept to completion for kitchens, living areas and full homes — space planning, material selection and custom ceiling and cabinetry design.'
+    body: 'Concept to completion for kitchens, living areas and full homes space planning, material selection and custom ceiling and cabinetry design.'
   },
   {
     code: 'CN',
@@ -21,7 +21,7 @@ const services: Service[] = [
   {
     code: 'RN',
     title: 'Renovations',
-    body: 'Reworking existing kitchens, ceilings and living spaces — modern gypsum ceiling designs, cabinetry upgrades and full space overhauls.'
+    body: 'Reworking existing kitchens, ceilings and living spaces modern gypsum ceiling designs, cabinetry upgrades and full space overhauls.'
   }
 ]
 

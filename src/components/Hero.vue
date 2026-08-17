@@ -61,7 +61,7 @@ const specs = [
 
       <p class="sub enter" :class="{ show: mounted }" style="--d: 320ms">
         Active Interiors &amp; Construction plans, builds and finishes homes
-        and commercial spaces across Kampala — from structural work to the
+        and commercial spaces across Kampala from structural work to the
         last coat of paint.
       </p>
 
