@@ -17,8 +17,8 @@ const el = useReveal()
         </p>
 
         <div class="actions">
-          <a href="tel:+256744300188" class="btn primary">
-            <span>Call 0744 300188</span>
+          <a href="tel:+256740769931" class="btn primary">
+            <span>Call +256 740 769931</span>
           </a>
           <a href="https://wa.me/256776419829" target="_blank" rel="noopener" class="btn ghost">
             WhatsApp +256 776 419829
@@ -29,7 +29,7 @@ const el = useReveal()
       <dl class="card">
         <div>
           <dt>Phone</dt>
-          <dd>0744 300188</dd>
+          <dd>+256 740 769931</dd>
         </div>
         <div>
           <dt>Alt. line</dt>
