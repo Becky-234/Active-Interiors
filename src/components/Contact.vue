@@ -5,6 +5,8 @@ const el = useReveal()
 
 <template>
   <section id="contact" class="contact">
+    <div class="glow" />
+
     <div class="wrap reveal" ref="el">
       <div class="col">
         <p class="eyebrow">Get in touch</p>
@@ -15,7 +17,9 @@ const el = useReveal()
         </p>
 
         <div class="actions">
-          <a href="tel:+256744300188" class="btn primary">Call 0744 300188</a>
+          <a href="tel:+256744300188" class="btn primary">
+            <span>Call 0744 300188</span>
+          </a>
           <a href="https://wa.me/256776419829" target="_blank" rel="noopener" class="btn ghost">
             WhatsApp +256 776 419829
           </a>
@@ -46,10 +50,33 @@ const el = useReveal()
 
 <style scoped>
 .contact {
-  padding: clamp(3.5rem, 8vw, 6rem) 0 5rem;
+  position: relative;
+  padding: clamp(4rem, 9vw, 7rem) 0 5rem;
+  overflow: hidden;
+}
+
+.glow {
+  position: absolute;
+  width: 460px;
+  height: 460px;
+  border-radius: 999px;
+  filter: blur(80px);
+  background: radial-gradient(circle, var(--brass-light), transparent 70%);
+  opacity: 0.25;
+  top: -160px;
+  right: -140px;
+  pointer-events: none;
+  animation: drift 18s ease-in-out infinite;
+}
+
+@keyframes drift {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(-30px, 26px); }
 }
 
 .wrap {
+  position: relative;
+  z-index: 1;
   display: grid;
   grid-template-columns: 1.2fr 1fr;
   gap: 3rem;
@@ -57,7 +84,7 @@ const el = useReveal()
 }
 
 h2 {
-  font-size: clamp(1.9rem, 3.6vw, 2.6rem);
+  font-size: clamp(2rem, 3.8vw, 2.8rem);
   margin-top: 0.75rem;
   max-width: 16ch;
 }
@@ -82,13 +109,15 @@ h2 {
 }
 
 .btn {
+  position: relative;
   font-family: var(--font-mono);
   font-size: 0.78rem;
   letter-spacing: 0.06em;
-  padding: 0.9rem 1.6rem;
-  border-radius: 2px;
+  padding: 0.95rem 1.7rem;
+  border-radius: 999px;
   border: 1px solid var(--ink);
-  transition: background 0.2s ease, color 0.2s ease;
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease, color 0.25s ease;
 }
 
 .btn.primary {
@@ -96,18 +125,49 @@ h2 {
   color: var(--off-white);
 }
 
+.btn.primary span {
+  position: relative;
+  z-index: 1;
+}
+
+.btn.primary::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--brass), var(--brass-light));
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+}
+
+.btn.primary:hover::before {
+  transform: translateY(0);
+}
+
 .btn.primary:hover {
-  background: var(--brass);
-  border-color: var(--brass);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 26px -10px rgba(156, 122, 60, 0.5);
+}
+
+.btn.ghost {
+  color: var(--ink);
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(6px);
 }
 
 .btn.ghost:hover {
   border-color: var(--brass);
   color: var(--brass);
+  transform: translateY(-2px);
 }
 
+/* -------- glass info card -------- */
 .card {
-  border: 1px solid var(--line-strong);
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(16px) saturate(160%);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 0 16px 34px -18px rgba(26, 24, 21, 0.28);
   padding: 2rem;
   margin: 0;
 }
