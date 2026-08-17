@@ -33,7 +33,7 @@ onUnmounted(() => {
 const specs = [
   { label: 'Scope', value: 'Interior Design · Construction · Renovations' },
   { label: 'Finish', value: 'Luxury finishes, functional designs' },
-  { label: 'Contact', value: '0744 300188 / +256 776 419829' }
+  { label: 'Contact', value: '+256 740 769931 / +256 776 419829' }
 ]
 </script>
 
