@@ -30,12 +30,20 @@ const el = useReveal()
 
 <template>
   <section id="why-us" class="why">
+    <div class="glow glow-a" />
+    <div class="glow glow-b" />
+
     <div class="wrap reveal" ref="el">
       <p class="eyebrow light">Why Active</p>
       <h2>Built the way it was drawn.</h2>
 
       <div class="values">
-        <div v-for="v in values" :key="v.label" class="value">
+        <div
+          v-for="(v, i) in values"
+          :key="v.label"
+          class="value"
+          :style="{ '--i': i }"
+        >
           <span class="label">{{ v.label }}</span>
           <h3>{{ v.title }}</h3>
           <p>{{ v.body }}</p>
@@ -47,8 +55,51 @@ const el = useReveal()
 
 <style scoped>
 .why {
+  position: relative;
   background: var(--charcoal);
-  padding: clamp(3.5rem, 8vw, 6rem) 0;
+  padding: clamp(4rem, 9vw, 7rem) 0;
+  overflow: hidden;
+}
+
+/* -------- ambient glow -------- */
+.glow {
+  position: absolute;
+  border-radius: 999px;
+  filter: blur(70px);
+  pointer-events: none;
+}
+
+.glow-a {
+  width: 380px;
+  height: 380px;
+  top: -120px;
+  left: -80px;
+  background: radial-gradient(circle, rgba(201, 167, 106, 0.28), transparent 70%);
+  animation: drift-a 16s ease-in-out infinite;
+}
+
+.glow-b {
+  width: 300px;
+  height: 300px;
+  bottom: -100px;
+  right: 5%;
+  background: radial-gradient(circle, rgba(156, 122, 60, 0.22), transparent 70%);
+  animation: drift-b 20s ease-in-out infinite;
+}
+
+@keyframes drift-a {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(40px, 30px); }
+}
+
+@keyframes drift-b {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(-30px, -24px); }
+}
+
+.wrap {
+  position: relative;
+  z-index: 1;
 }
 
 .eyebrow.light {
@@ -57,7 +108,7 @@ const el = useReveal()
 
 .why h2 {
   color: var(--off-white);
-  font-size: clamp(1.9rem, 3.6vw, 2.6rem);
+  font-size: clamp(2rem, 3.8vw, 2.8rem);
   margin-top: 0.75rem;
   max-width: 18ch;
 }
@@ -66,12 +117,24 @@ const el = useReveal()
   margin-top: 3.5rem;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 2.5rem;
+  gap: 1.5rem;
 }
 
+/* -------- glass value card, dark variant -------- */
 .value {
-  border-top: 1px solid rgba(201, 167, 106, 0.3);
-  padding-top: 1.5rem;
+  padding: 1.75rem 1.6rem;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(201, 167, 106, 0.22);
+  transition: transform 0.35s ease, background 0.35s ease, border-color 0.35s ease;
+}
+
+.value:hover {
+  transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(201, 167, 106, 0.45);
 }
 
 .label {
@@ -97,7 +160,7 @@ const el = useReveal()
 @media (max-width: 780px) {
   .values {
     grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: 1rem;
   }
 }
 </style>
