@@ -1,22 +1,18 @@
 <script setup lang="ts">
 import { onMounted, onUnmounted, ref, computed } from 'vue'
+import heroImage from '../assets/Active-hero.png'
 
 const mounted = ref<boolean>(false)
 const mouseX = ref<number>(0)
 const mouseY = ref<number>(0)
 
 function onMouseMove(e: MouseEvent): void {
-  // -1 to 1 range, based on viewport position
   mouseX.value = (e.clientX / window.innerWidth) * 2 - 1
   mouseY.value = (e.clientY / window.innerHeight) * 2 - 1
 }
 
 const parallax = computed(() => ({
   transform: `translate(${mouseX.value * 10}px, ${mouseY.value * 8}px)`
-}))
-
-const parallaxSlow = computed(() => ({
-  transform: `translate(${mouseX.value * -16}px, ${mouseY.value * -12}px)`
 }))
 
 onMounted(() => {
@@ -40,9 +36,9 @@ const specs = [
 <template>
   <section id="top" class="hero">
     <div class="backdrop">
-      <div class="grid-layer" />
-      <div class="glow glow-a" :style="parallaxSlow" />
-      <div class="glow glow-b" :style="parallax" />
+      <img :src="heroImage" alt="Active Interiors and Construction project" class="hero-img" />
+      <div class="overlay"></div>
+      <div class="glow glow-a"></div>
     </div>
 
     <div class="wrap hero-inner">
@@ -88,71 +84,52 @@ const specs = [
   padding-top: clamp(3.5rem, 9vw, 7rem);
   padding-bottom: clamp(3.5rem, 9vw, 6rem);
   overflow: hidden;
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
 }
 
-/* -------- animated backdrop -------- */
+/* -------- full-bleed background image -------- */
 .backdrop {
   position: absolute;
   inset: 0;
   z-index: 0;
-  pointer-events: none;
 }
 
-.grid-layer {
+.hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.overlay {
   position: absolute;
   inset: 0;
-  background-image:
-    linear-gradient(var(--line) 1px, transparent 1px),
-    linear-gradient(90deg, var(--line) 1px, transparent 1px);
-  background-size: 44px 44px;
-  background-position: center;
-  opacity: 0;
-  -webkit-mask-image: linear-gradient(to bottom, black 55%, transparent 100%);
-  mask-image: linear-gradient(to bottom, black 55%, transparent 100%);
-  animation: fade-grid 1.6s ease forwards 0.1s;
-}
-
-@keyframes fade-grid {
-  to {
-    opacity: 1;
-  }
+  background:
+    linear-gradient(180deg, rgba(11, 11, 10, 0.75) 0%, rgba(11, 11, 10, 0.55) 45%, rgba(11, 11, 10, 0.85) 100%);
 }
 
 .glow {
   position: absolute;
   border-radius: 999px;
-  filter: blur(60px);
-  opacity: 0.35;
-  transition: transform 0.4s ease-out;
+  filter: blur(80px);
+  opacity: 0.3;
+  pointer-events: none;
 }
 
 .glow-a {
-  width: 420px;
-  height: 420px;
-  top: -140px;
-  right: -80px;
-  background: radial-gradient(circle, var(--brass-light), transparent 70%);
-  animation: float-a 14s ease-in-out infinite;
-}
-
-.glow-b {
-  width: 320px;
-  height: 320px;
-  bottom: -100px;
-  left: 10%;
+  width: 480px;
+  height: 480px;
+  top: -160px;
+  right: -100px;
   background: radial-gradient(circle, var(--brass), transparent 70%);
-  opacity: 0.22;
-  animation: float-b 18s ease-in-out infinite;
+  animation: float-a 16s ease-in-out infinite;
 }
 
 @keyframes float-a {
   0%, 100% { transform: translate(0, 0); }
   50% { transform: translate(-30px, 24px); }
-}
-
-@keyframes float-b {
-  0%, 100% { transform: translate(0, 0); }
-  50% { transform: translate(24px, -20px); }
 }
 
 /* -------- entrance animation -------- */
@@ -177,6 +154,7 @@ const specs = [
 .eyebrow {
   margin-bottom: 1.25rem;
   display: block;
+  color: var(--brass-light);
 }
 
 h1 {
@@ -184,6 +162,7 @@ h1 {
   line-height: 1.05;
   letter-spacing: -0.01em;
   max-width: 18ch;
+  color: #ffffff;
 }
 
 h1 .line {
@@ -210,6 +189,7 @@ h1 em {
   margin-top: 1.75rem;
   max-width: 46ch;
   font-size: 1.05rem;
+  color: rgba(255, 255, 255, 0.75);
 }
 
 .actions {
@@ -227,15 +207,15 @@ h1 em {
   text-transform: uppercase;
   padding: 0.95rem 1.7rem;
   border-radius: 999px;
-  border: 1px solid var(--ink);
+  border: 1px solid rgba(255, 255, 255, 0.4);
   transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease, color 0.25s ease;
   overflow: hidden;
 }
 
 .btn.primary {
-  background: var(--ink);
-  color: var(--off-white);
-  border-color: var(--ink);
+  background: var(--off-white);
+  color: var(--ink);
+  border-color: var(--off-white);
 }
 
 .btn.primary span {
@@ -257,19 +237,19 @@ h1 em {
 }
 
 .btn.primary:hover {
-  box-shadow: 0 12px 28px -10px rgba(156, 122, 60, 0.55);
+  box-shadow: 0 12px 28px -10px rgba(242, 201, 76, 0.5);
   transform: translateY(-2px);
 }
 
 .btn.ghost {
-  color: var(--ink);
-  background: rgba(255, 255, 255, 0.3);
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(6px);
 }
 
 .btn.ghost:hover {
   border-color: var(--brass);
-  color: var(--brass);
+  color: var(--brass-light);
   transform: translateY(-2px);
 }
 
@@ -287,17 +267,17 @@ h1 em {
   gap: 0.3rem;
   padding: 0.9rem 1.3rem;
   border-radius: 16px;
-  background: rgba(250, 248, 243, 0.5);
+  background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(14px) saturate(160%);
   -webkit-backdrop-filter: blur(14px) saturate(160%);
-  border: 1px solid rgba(255, 255, 255, 0.6);
-  box-shadow: 0 10px 24px -14px rgba(26, 24, 21, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 10px 24px -14px rgba(0, 0, 0, 0.4);
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .chip:hover {
   transform: translateY(-3px);
-  box-shadow: 0 16px 30px -14px rgba(26, 24, 21, 0.35);
+  box-shadow: 0 16px 30px -14px rgba(0, 0, 0, 0.5);
 }
 
 .chip-label {
@@ -305,12 +285,12 @@ h1 em {
   font-size: 0.62rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--brass);
+  color: var(--brass-light);
 }
 
 .chip-value {
   font-size: 0.85rem;
-  color: var(--ink);
+  color: #ffffff;
   max-width: 30ch;
 }
 
@@ -324,9 +304,7 @@ h1 em {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .glow,
-  .grid-layer,
-  h1 em {
+  .glow {
     animation: none !important;
   }
 }
