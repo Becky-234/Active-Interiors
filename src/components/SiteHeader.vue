@@ -43,10 +43,10 @@ onUnmounted(() => {
           </a>
         </nav>
 
-        <a href="tel:+256744300188" class="call">Call us</a>
+        <a href="tel:+256740769931" class="call">Call us</a>
 
         <button class="burger" :class="{ open }" @click="open = !open" aria-label="Toggle menu">
-          <span /><span />
+          <span></span><span></span>
         </button>
       </div>
 
@@ -62,39 +62,46 @@ onUnmounted(() => {
 
 <style scoped>
 .header {
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
   z-index: 50;
   padding-top: 1rem;
+  pointer-events: none;
 }
 
 .bar {
   position: relative;
+  pointer-events: none;
+  display: flex;
 }
 
 /* -------- floating glass pill -------- */
 .pill {
+  pointer-events: auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 1.5rem;
   padding: 0.5rem 0.6rem 0.5rem 0.9rem;
   border-radius: 999px;
-  background: rgba(250, 248, 243, 0.55);
+  background: rgba(255, 255, 255, 0.55);
   backdrop-filter: blur(18px) saturate(160%);
   -webkit-backdrop-filter: blur(18px) saturate(160%);
   border: 1px solid rgba(255, 255, 255, 0.6);
   box-shadow:
-    0 1px 1px rgba(26, 24, 21, 0.04),
-    0 8px 24px -8px rgba(26, 24, 21, 0.18);
-  transition: background 0.35s ease, box-shadow 0.35s ease, padding 0.35s ease;
+    0 1px 1px rgba(0, 0, 0, 0.04),
+    0 8px 24px -8px rgba(0, 0, 0, 0.25);
+  transition: background 0.35s ease, box-shadow 0.35s ease;
+  width: 100%;
 }
 
 .pill.scrolled {
-  background: rgba(250, 248, 243, 0.78);
+  background: rgba(255, 255, 255, 0.85);
   box-shadow:
-    0 1px 1px rgba(26, 24, 21, 0.05),
-    0 12px 32px -10px rgba(26, 24, 21, 0.24);
+    0 1px 1px rgba(0, 0, 0, 0.05),
+    0 12px 32px -10px rgba(0, 0, 0, 0.3);
 }
 
 /* -------- brand / logo -------- */
@@ -104,7 +111,7 @@ onUnmounted(() => {
 }
 
 .mark {
-  height: 56px;
+  height: 48px;
   width: auto;
   display: block;
   border-radius: 999px;
@@ -129,6 +136,7 @@ onUnmounted(() => {
   color: var(--ink-soft);
   border-radius: 999px;
   transition: color 0.2s ease, background 0.2s ease;
+  white-space: nowrap;
 }
 
 .nav a span {
@@ -150,7 +158,7 @@ onUnmounted(() => {
 
 .nav a:hover {
   color: var(--ink);
-  background: rgba(26, 24, 21, 0.04);
+  background: rgba(0, 0, 0, 0.04);
 }
 
 .nav a:hover span::after {
@@ -167,13 +175,13 @@ onUnmounted(() => {
   padding: 0.65rem 1.2rem;
   border-radius: 999px;
   white-space: nowrap;
-  box-shadow: 0 6px 16px -6px rgba(26, 24, 21, 0.5);
+  box-shadow: 0 6px 16px -6px rgba(0, 0, 0, 0.5);
   transition: box-shadow 0.25s ease, transform 0.25s ease, background 0.25s ease;
 }
 
 .call:hover {
   background: linear-gradient(135deg, var(--brass), var(--brass-light));
-  box-shadow: 0 10px 22px -6px rgba(156, 122, 60, 0.55);
+  box-shadow: 0 10px 22px -6px rgba(242, 201, 76, 0.55);
   transform: translateY(-1px);
 }
 
@@ -209,17 +217,19 @@ onUnmounted(() => {
 
 /* -------- mobile glass drawer -------- */
 .mobile-nav {
+  pointer-events: auto;
   margin-top: 0.75rem;
   padding: 1.25rem;
   border-radius: 22px;
-  background: rgba(250, 248, 243, 0.85);
+  background: rgba(255, 255, 255, 0.9);
   backdrop-filter: blur(18px) saturate(160%);
   -webkit-backdrop-filter: blur(18px) saturate(160%);
   border: 1px solid rgba(255, 255, 255, 0.6);
-  box-shadow: 0 16px 40px -12px rgba(26, 24, 21, 0.28);
+  box-shadow: 0 16px 40px -12px rgba(0, 0, 0, 0.3);
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
+  max-width: fit-content;
 }
 
 .mobile-nav a {
