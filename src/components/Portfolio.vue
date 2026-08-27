@@ -1,5 +1,11 @@
 <script setup lang="ts">
 import { useReveal } from '../composables/useReveal'
+import kitchenConcepts from '../assets/work/kitchen-concepts.mp4'
+import kitchenRenovation from '../assets/work/kitchen-renovation.mp4'
+import gypsumCeiling from '../assets/work/gypsum-ceiling.mp4'
+import walkinCloset from '../assets/work/walk-in-closet.mp4'
+import tvDisplayCabinet from '../assets/work/tv-display.mp4'
+import modernCeiling from '../assets/work/modern-ceiling.mp4'
 
 interface WorkItem {
   fig: string
@@ -9,17 +15,13 @@ interface WorkItem {
   poster: string | null
 }
 
-// TODO: once clips arrive, replace `video: null` with the real
-// video path (place files in src/assets/work/ and import them,
-// e.g. import kitchenClip from '../assets/work/kitchen-1.mp4')
-// `poster` is an optional thumbnail shown before the video plays.
 const work: WorkItem[] = [
-  { fig: '01', title: 'Kitchen Concept', tag: 'Interior Design', video: null, poster: null },
-  { fig: '02', title: 'Small Kitchen, Full Function', tag: 'Interior Design', video: null, poster: null },
-  { fig: '03', title: 'Gypsum Ceiling Design', tag: 'Construction', video: null, poster: null },
-  { fig: '04', title: 'Modern Ceiling Design', tag: 'Renovation', video: null, poster: null },
-  { fig: '05', title: 'Full Kitchen Renovation', tag: 'Renovation', video: null, poster: null },
-  { fig: '06', title: 'Marble Finish Kitchen', tag: 'Interior Design', video: null, poster: null }
+  { fig: '01', title: 'Kitchen Concept', tag: 'Interior Design', video: kitchenConcepts, poster: null },
+  { fig: '02', title: 'TV Display Cabinet', tag: 'Interior Design', video: tvDisplayCabinet, poster: null },
+  { fig: '03', title: 'Gypsum Ceiling Design', tag: 'Construction', video: gypsumCeiling, poster: null },
+  { fig: '04', title: 'Modern Ceiling Design', tag: 'Renovation', video: modernCeiling, poster: null },
+  { fig: '05', title: 'Full Kitchen Renovation', tag: 'Renovation', video: kitchenRenovation, poster: null },
+  { fig: '06', title: 'Modern Walk-in Closet Design', tag: 'Interior Design', video: walkinCloset, poster: null }
 ]
 
 const el = useReveal()
@@ -30,7 +32,7 @@ const el = useReveal()
     <div class="wrap reveal" ref="el">
       <p class="eyebrow">Recent work</p>
       <h2>What we've built lately</h2>
-      <p class="lede">A running record of what's gone through the workshop. Clips updating soon.</p>
+      <p class="lede">A running record of what's gone through the workshop.</p>
 
       <div class="grid">
         <figure
@@ -48,12 +50,12 @@ const el = useReveal()
               loop
               playsinline
               controls
-            />
+            ></video>
             <template v-else>
               <span class="ph-mark">FIG. {{ w.fig }}</span>
               <span class="ph-play">
                 <svg viewBox="0 0 24 24" width="18" height="18" fill="none">
-                  <path d="M8 5v14l11-7z" fill="currentColor" />
+                  <path d="M8 5v14l11-7z" fill="currentColor"></path>
                 </svg>
               </span>
             </template>
