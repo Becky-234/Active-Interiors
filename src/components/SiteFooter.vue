@@ -32,7 +32,7 @@ const socials = [
       <div class="col brand-col">
         <img src="../assets/Active-Logo.jpeg" alt="Active Interiors and Construction" class="logo" />
         <p class="tagline">
-          Transforming spaces into timeless masterpieces — interior design,
+          Transforming spaces into timeless masterpieces, interior design,
           construction and renovations across Kampala.
         </p>
 
@@ -116,9 +116,11 @@ const socials = [
 }
 
 .brand-col .logo {
-  height: 44px;
+ height: 48px;
   width: auto;
-  border-radius: 10px;
+  display: block;
+  border-radius: 999px;
+  transition: transform 0.3s ease;
 }
 
 .tagline {
